@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+
+:root {
+  --alice-blue: #e3f2fdff;
+  --uranian-blue: #bbdefbff;
+  --light-sky-blue: #90caf9ff;
+  --argentinian-blue: #64b5f6ff;
+  --argentinian-blue-2: #42a5f5ff;
+  --dodger-blue: #2196f3ff;
+  --bleu-de-france: #1e88e5ff;
+  --french-blue: #1976d2ff;
+  --green-blue: #1565c0ff;
+  --cobalt-blue: #0d47a1ff;
+  --title-police:
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: lugrasimo;
+  scroll-behavior: smooth;
+  color: var(--alice-blue);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  background-color: var(--green-blue);
+  height: 100vh;
+}
+
+header,
+footer {
+  display: none;
+}
+
+header {
+
+  &.desktop,
+  &.tablet {
+    display: flex;
+    margin-bottom: 1vh;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+footer {
+  &.mobile {
+    display: flex;
+  }
+}
+
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  height: 5vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.2);
 
-.App-link {
-  color: #61dafb;
-}
+  .link {
+    font-weight: 600;
+    text-decoration: none;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+    &:hover {
+      text-decoration: underline var(--light-sky-blue);
+      -webkit-text-underline-position: under;
+      text-underline-position: under;
+      text-decoration-thickness: 1px;
+    }
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.main_title {
+  font-size: 40px;
+  text-align: center;
+  color: var(--argentinian-blue);
+  filter: drop-shadow(2px 1px 2px red);
+}
+
+.main_container {
+  height: 85vh;
+  margin-top: 1vh;
+  
+  /* Homepage */
+  .search_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3vh;
+
+    .search_input {
+      padding: 2px;
+      text-align: center;
+      border-radius: 10px;
+      background-color: var(--cobalt-blue);
+
+      &::placeholder {
+        color: var(--alice-blue);
+      }
+    }
+
+    .search_button {
+      color: black;
+      cursor: pointer;
+      padding: 2px 8px;
+      margin-inline: 5px;
+      border-radius: 8px;
+      font-weight: 600;
+      background-color: var(--alice-blue);
+    }
+  }
+
+  .result_section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &.false {
+      display: none;
+    }
+
+    .weather_card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 50vh;
+      width: 80vw;
+      margin-top: 10vh;
+      margin-bottom: 2vh;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(4.4px);
+      -webkit-backdrop-filter: blur(4.4px);
+      border: 1px solid rgba(255, 255, 255, 0.39);
+
+      .weather_card_name {
+        margin-top: 2vh;
+        text-align: center;
+      }
+
+      .weather_card_icon_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .weather_card_detailed_information {
+        margin-top: 5vh;
+        & p {
+          margin-bottom: 1vh;
+        }
+      }
+    }
+
+    .checkbox_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      & input {
+        height: 1rem;
+        width: 1rem;
+        margin-left: 1rem;
+      }
+    }
   }
 }

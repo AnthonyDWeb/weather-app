@@ -23,8 +23,8 @@ function App() {
 				<main>
 					<h1 className="main_title">Weather App</h1>
 					<Routes>
-						<Route path="/" element={<Homepage />} />
-						<Route path="/favorites" element={<Favorites />} />
+						<Route path="weather-app/" element={<Homepage />} />
+						<Route path="weather-app/favorites" element={<Favorites />} />
 					</Routes>
 				</main>
 				<footer className={`footer ${device}`}>

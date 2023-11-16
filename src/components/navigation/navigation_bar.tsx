@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export default function NavigationBar() {
   return (
     <nav className="navbar">
-        <Link className='link' to="/">Homepage</Link>
-        <Link className='link' to="/favorites">Favorites</Link>
+        <Link className='link' to="weather-app/">Homepage</Link>
+        <Link className='link' to="weather-app/favorites">Favorites</Link>
     </nav>
   )
 }

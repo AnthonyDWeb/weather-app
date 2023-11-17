@@ -18,18 +18,17 @@
   padding: 0;
   margin: 0;
   font-family: lugrasimo;
-  scroll-behavior: smooth;
   color: var(--alice-blue);
 }
 
 body {
   background-color: var(--green-blue);
-  height: 100vh;
 }
 
 header,
 footer {
   display: none;
+  width: 100%;
 }
 
 header {
@@ -37,7 +36,6 @@ header {
   &.desktop,
   &.tablet {
     display: flex;
-    margin-bottom: 1vh;
   }
 }
 
@@ -52,8 +50,13 @@ footer {
   justify-content: space-around;
   align-items: center;
   height: 5vh;
-  width: 100vw;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+
+  &.tablet,
+  &.desktop {
+    position: fixed;
+  }
 
   .link {
     font-weight: 600;
@@ -68,6 +71,18 @@ footer {
   }
 }
 
+.title_container {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &.tablet,
+  &.desktop {
+    margin-top: 5vh;
+  }
+}
+
 .main_title {
   font-size: 40px;
   text-align: center;
@@ -79,9 +94,21 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 85vh;
-  margin-top: 1vh;
-  overflow: scroll;
+  margin-top: 10px;
+  height: calc(100vh - 15vh - 10px);
+
+  &.mobile {
+    overflow-y: scroll;
+  }
+
+  &.desktop,
+  &.tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100%;
+
+  }
 
   /* Homepage */
   .search_section {
@@ -107,6 +134,7 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 5vh;
 
     &.false {
       display: none;
@@ -137,16 +165,27 @@ footer {
     background-color: var(--alice-blue);
   }
 
-  .weather_card {
+  .weather_card,
+  .empty_card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 55vh;
+    min-height: 55vh;
     width: 80vw;
-    margin-top: 5vh;
-    margin-bottom: 2vh;
-    background: rgba(255, 255, 255, 0.12);
+    margin-bottom: 5vh;
     border-radius: 16px;
+
+    &.desktop {
+      width: 25vw;
+    }
+
+    &.tablet {
+      width: 40vw;
+    }
+  }
+
+  .weather_card {
+    background: rgba(255, 255, 255, 0.12);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.4px);
     -webkit-backdrop-filter: blur(4.4px);
@@ -176,5 +215,10 @@ footer {
       margin-bottom: 2vh;
       color: black;
     }
+  }
+
+  .empty_card {
+    border: dotted black;
+    justify-content: center;
   }
 }

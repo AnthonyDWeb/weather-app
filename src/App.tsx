@@ -17,12 +17,14 @@ function App() {
 	return (
 		<BrowserRouter>
 			<FavoriteContextProvider>
-				<PagesContainer device={device}>
+				<PagesContainer>
 					<header className={`header ${device}`}>
 						<NavigationBar />
 					</header>
-					<main>
-						<h1 className="main_title">Weather App</h1>
+					<main className={`${device}`}>
+						<div className={`title_container ${device}`}>
+							<h1 className="main_title">Weather App</h1>
+						</div>
 						<Routes>
 							<Route path="weather-app/" element={<Homepage />} />
 							<Route path="weather-app/favorites" element={<Favorites />} />
@@ -39,11 +41,13 @@ function App() {
 
 export default App;
 
-const PagesContainer = styled.div<{ device: string }>`
+// const PagesContainer = styled.div<{ device: string }>`
+
+// `;
+const PagesContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
-	padding: ${(props) =>
-		props.device === "mobile" ? "3vh 5vw 0 5vw" : "0 5vw"};
+	min-height: 100vh;
+	justify-content: space-between;
 `;

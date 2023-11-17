@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FavoriteContext } from "../../contexts/favorite.context";
+import useDevice from "../../utils/hooks/useDevice";
 
 interface props {
 	data: object | any;
@@ -7,6 +8,7 @@ interface props {
 }
 
 export default function WeatherCard({ data, route }: props) {
+	const { device } = useDevice();
 	const { favorites, addToFavorites } = useContext(FavoriteContext);
 
 	const capitalizeFirstLetter = (string: string) =>
@@ -15,7 +17,7 @@ export default function WeatherCard({ data, route }: props) {
 	const getCelcius = (k: number) => k - 273.15;
 
 	return (
-		<div className="weather_card">
+		<div className={`weather_card ${device}`}>
 			<h2 className="weather_card_name">{data.name}</h2>
 			{data.weather.map((e: any) => (
 				<div className="weather_card_icon_container" key={e.icon}>

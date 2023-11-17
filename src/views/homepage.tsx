@@ -1,16 +1,18 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../App.css";
 import { weatherSearch } from "../utils/api/fetch_data";
 import WeatherCard from "../components/card/weather_card";
 
 export default function Homepage() {
+	// hooks
+	// PRIVATES CONSTANTES
+	const cityName = useRef<string>("");
 	const [city, setData] = useState<object | any>();
 	const [isCheked, setChecked] = useState(false);
-	const cityName = useRef<string>("");
 
 	// FUNCTIONS
-	const fetchData = async () => {
-		const dataFetch = await weatherSearch(cityName.current);
+	const fetchData = async (value: string) => {
+		const dataFetch = await weatherSearch(value);
 		setData(dataFetch);
 	};
 	const checkChange = () => {
@@ -28,7 +30,10 @@ export default function Homepage() {
 					defaultValue={cityName.current}
 					onChange={(t) => (cityName.current = t.target.value)}
 				/>
-				<button className="search_button" onClick={() => fetchData()}>
+				<button
+					className="search_button"
+					onClick={() => fetchData(cityName.current)}
+				>
 					search
 				</button>
 			</section>
@@ -36,18 +41,20 @@ export default function Homepage() {
 	};
 
 	const Result = () => {
-		return city && (
-			<section className={`result_section ${city !== undefined}`}>
-				<WeatherCard data={city} />
-				<div className="checkbox_container">
-					<p>City by default</p>
-					<input
-						onClick={checkChange}
-						type="checkbox"
-						defaultChecked={isCheked}
-					/>
-				</div>
-			</section>
+		return (
+			city && (
+				<section className={`result_section ${city !== undefined}`}>
+					<WeatherCard data={city} />
+					<div className="checkbox_container">
+						<p>City by default</p>
+						<input
+							onClick={checkChange}
+							type="checkbox"
+							defaultChecked={isCheked}
+						/>
+					</div>
+				</section>
+			)
 		);
 	};
 

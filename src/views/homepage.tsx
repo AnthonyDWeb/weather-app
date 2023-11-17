@@ -8,16 +8,16 @@ export default function Homepage() {
 	// PRIVATES CONSTANTES
 	const cityName = useRef<string>("");
 	const [city, setData] = useState<object | any>();
-	const [isCheked, setChecked] = useState(false);
+	// const [isCheked, setChecked] = useState(false);
 
 	// FUNCTIONS
 	const fetchData = async (value: string) => {
 		const dataFetch = await weatherSearch(value);
 		setData(dataFetch);
 	};
-	const checkChange = () => {
-		setChecked(!isCheked);
-	};
+	// const checkChange = () => {
+	// 	setChecked(!isCheked);
+	// };
 
 	// RENDERS
 	const Search = () => {
@@ -45,14 +45,14 @@ export default function Homepage() {
 			city && (
 				<section className={`result_section ${city !== undefined}`}>
 					<WeatherCard data={city} />
-					<div className="checkbox_container">
+					{/* <div className="checkbox_container">
 						<p>City by default</p>
 						<input
 							onClick={checkChange}
 							type="checkbox"
 							defaultChecked={isCheked}
 						/>
-					</div>
+					</div> */}
 				</section>
 			)
 		);
